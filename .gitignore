@@ -1,0 +1,10 @@
+**/data/
+src/sm_book_rag/rag_experiments/
+src/market_live_rag/mkt-live-experiment/
+src/financial_data_rag/fin-rag-experiment/
+
+mainenv
+.env
+__pycache__
+logs/
+src.egg-info/

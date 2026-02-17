@@ -1,0 +1,69 @@
+{
+  exch: 'NSE',
+  instrument: 'EQUITY',
+  securityId: '2885',
+  symbolName: 'RELIANCE INDUSTRIES LTD',
+  underlyingSymbol: 'RELIANCE',
+  displayName: 'RELIANCE INDUSTRIES',
+  lotSize: 1,
+  tickSize: 10,
+  ltp: 1419.5999755859375,
+  strikeGap: 10,
+  volume: 10755693,
+  oi: 0,
+  open: 1445.5,
+  high: 1450.699951171875,
+  low: 1416.300048828125,
+  close: 1419.6,
+  depth: [
+    {
+      bidQty: 459,
+      askQty: 0,
+      bidOrders: 5,
+      askOrders: 0,
+      bidPrice: 1419.5999755859375,
+      askPrice: 0
+    },
+    {
+      bidQty: 0,
+      askQty: 0,
+      bidOrders: 0,
+      askOrders: 0,
+      bidPrice: 0,
+      askPrice: 0
+    },
+    {
+      bidQty: 0,
+      askQty: 0,
+      bidOrders: 0,
+      askOrders: 0,
+      bidPrice: 0,
+      askPrice: 0
+    },
+    {
+      bidQty: 0,
+      askQty: 0,
+      bidOrders: 0,
+      askOrders: 0,
+      bidPrice: 0,
+      askPrice: 0
+    },
+    {
+      bidQty: 0,
+      askQty: 0,
+      bidOrders: 0,
+      askOrders: 0,
+      bidPrice: 0,
+      askPrice: 0
+    }
+  ],
+  change: -0.0000017197846160221562,
+  ltq: 3,
+  ltt: 1770998372,
+  lttDate: 2026-02-13T15:59:32.000Z,
+  atp: 1423.72998046875,
+  totalBuyQty: 459,
+  totalSellQty: 0,
+  highOI: 0,
+  lowOI: 0
+}

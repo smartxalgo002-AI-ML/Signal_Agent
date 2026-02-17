@@ -1,0 +1,75 @@
+{
+  exch: 'NSE',
+  instrument: 'OPTIDX',
+  securityId: '48236',
+  symbolName: 'NIFTY-FEB2026-26000-CE',
+  underlyingSecurityId: '26000',
+  underlyingSymbol: 'NIFTY',
+  displayName: 'NIFTY 17 FEB 26000 CALL',
+  lotSize: 65,
+  tickSize: 5,
+  strikePrice: 26000,
+  expiryDate: '2026-02-17',
+  optionType: 'CE',
+  strikeGap: 50,
+  moneyness: 'OTM',
+  moneynessDepth: 11,
+  ltp: 16.5,
+  volume: 119747615,
+  oi: 17330300,
+  open: 26,
+  high: 26,
+  low: 12.100000381469727,
+  close: 46.45,
+  depth: [
+    {
+      bidQty: 715,
+      askQty: 1170,
+      bidOrders: 1,
+      askOrders: 1,
+      bidPrice: 16.399999618530273,
+      askPrice: 16.5
+    },
+    {
+      bidQty: 975,
+      askQty: 780,
+      bidOrders: 3,
+      askOrders: 2,
+      bidPrice: 16.350000381469727,
+      askPrice: 16.549999237060547
+    },
+    {
+      bidQty: 260,
+      askQty: 585,
+      bidOrders: 2,
+      askOrders: 2,
+      bidPrice: 16.299999237060547,
+      askPrice: 16.600000381469727
+    },
+    {
+      bidQty: 260,
+      askQty: 390,
+      bidOrders: 1,
+      askOrders: 2,
+      bidPrice: 16.25,
+      askPrice: 16.649999618530273
+    },
+    {
+      bidQty: 195,
+      askQty: 1430,
+      bidOrders: 1,
+      askOrders: 3,
+      bidPrice: 16.149999618530273,
+      askPrice: 16.700000762939453
+    }
+  ],
+  change: -64.47793326157158,
+  ltq: 65,
+  ltt: 1770996599,
+  lttDate: 2026-02-13T15:29:59.000Z,
+  atp: 15.020000457763672,
+  totalBuyQty: 747305,
+  totalSellQty: 1474590,
+  highOI: 20621445,
+  lowOI: 16509155
+}
