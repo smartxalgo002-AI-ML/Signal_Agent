@@ -23,8 +23,8 @@ s3 = boto3.client(
 )
 
 bucket_name = "utk-signal-agent"
-local_folder = BASE_DIR / "src\sm_book_rag\data"
-s3_prefix = "book_rag_data/"
+local_folder = BASE_DIR / "src\market_live_rag\data"
+s3_prefix = "market_live_rag_data/"
 
 print("Starting upload...\n")
 

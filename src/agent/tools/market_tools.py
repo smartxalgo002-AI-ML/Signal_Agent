@@ -11,34 +11,34 @@ def news_vector_db(query: Annotated[str, "News query"]):
     """Retrieve latest relevant news for a stock."""
     return "This is the News data"
 
-@tool
-def financial_data(query: Annotated[str, "Financial query"]):
-    """Retrieve latest financial fundamentals for a stock."""
-    return "This is the Financial data"
-
 # @tool
 # def financial_data(query: Annotated[str, "Financial query"]):
 #     """Retrieve latest financial fundamentals for a stock."""
+#     return "This is the Financial data"
 
-#     metrics = [
-#         "Sales",
-#         "Profit before tax",
+@tool
+def financial_data(query: Annotated[str, "Financial query"]):
+    """Retrieve latest financial fundamentals for a stock."""
 
-#         "No. of Shareholders",
-#         "FIIs ",
-#         "DIIs ",
-#         "Public"
+    metrics = [
+        "Sales",
+        "Profit before tax",
 
-#     ]
+        "No. of Shareholders",
+        "FIIs ",
+        "DIIs ",
+        "Public"
 
-#     answer = get_metrics(query, metrics)
+    ]
 
-#     # print("\nFinal Output:\n")
+    answer = get_metrics(query, metrics)
 
-#     # for row in data:
-#     # print(answer)
+    # print("\nFinal Output:\n")
 
-#     return answer
+    # for row in data:
+    # print(answer)
+
+    return answer
 
 
 @tool

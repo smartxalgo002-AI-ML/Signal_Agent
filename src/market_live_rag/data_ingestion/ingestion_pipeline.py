@@ -34,7 +34,7 @@ class DataIngestion:
 
             # ✅ Setup persist directory once
             index_name = self.config["vector_db"]["index_name"]
-            self.persist_directory = rf"src\market_live_rag\data\vector_data\{index_name}_vdb_latest"
+            self.persist_directory = r"src\market_live_rag\data\vector_data"
 
             # ✅ Initialize vector DB once (may be empty first run)
             self.chroma_vdb = None
@@ -199,7 +199,7 @@ class DataIngestion:
 if __name__ == "__main__":
     data_ingestion = DataIngestion()
 
-    file_path = r"src\market-live-rag\data\json_data\Markets.json"
+    file_path = r"src\market_live_rag\data\json_data\Markets.json"
 
     # Step 1: Ensure DB exists (runs only once)
     data_ingestion.run_pipeline(file_path)
