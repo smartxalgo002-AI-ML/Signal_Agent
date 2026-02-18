@@ -10,6 +10,8 @@ from src.logger import logging
 from src.exception import SignalAgentException
 from src.utils.model_loaders import ModelLoader
 from src.utils.config_loader import load_config
+from src.aws.s3_downloader import download_s3_folder
+
 from dotenv import load_dotenv
 
 import sys
@@ -25,6 +27,10 @@ class DataIngestion:
 
         try:
             print("Initializing DataIngestion pipeline...")
+
+            # 🔹 Ensure data folder exists
+            self._ensure_data_folder()
+
             self.model_loader = ModelLoader()
             self._load_env_variables()
             self.config = load_config()
@@ -60,6 +66,27 @@ class DataIngestion:
 
         except Exception as e:
             raise SignalAgentException(e, sys)
+
+    def _ensure_data_folder(self):
+        """
+        If local data folder does not exist → download from S3.
+        """
+
+        local_data_path = r"src\market_live_rag\data"
+
+        if not os.path.exists(local_data_path):
+            print("\nLocal data folder not found. Downloading from S3...\n")
+
+            download_s3_folder(
+                bucket_name="utk-signal-agent",
+                s3_prefix="market_live_rag_data/",
+                local_dir=local_data_path
+            )
+
+            print("\nS3 data download completed.\n")
+
+        else:
+            print("Local data folder exists. Skipping S3 download.")
 
     def load_json_documents(self, file_path: str) -> List[Document]:
         """

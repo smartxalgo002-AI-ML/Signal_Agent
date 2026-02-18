@@ -13,6 +13,7 @@ from langchain_core.messages import SystemMessage, HumanMessage
 
 from src.exception import SignalAgentException
 from src.utils.model_loaders import ModelLoader
+from src.aws.s3_downloader import download_s3_folder
 
 
 class BookIngestionPipeline:
@@ -26,6 +27,9 @@ class BookIngestionPipeline:
 
             load_dotenv()
             self._load_env_variables()
+
+            # 🔹 Ensure data folder exists
+            self._ensure_data_folder()
 
             # ✅ Load embedding once
             self.model_loader = ModelLoader()
@@ -50,6 +54,27 @@ class BookIngestionPipeline:
 
         if missing_vars:
             raise EnvironmentError(f"Missing environment variables: {missing_vars}")
+
+    def _ensure_data_folder(self):
+        """
+        If local data folder does not exist → download from S3.
+        """
+
+        local_data_path = r"src\sm_book_rag\data"
+
+        if not os.path.exists(local_data_path):
+            print("\nLocal data folder not found. Downloading from S3...\n")
+
+            download_s3_folder(
+                bucket_name="utk-signal-agent",
+                s3_prefix="book_rag_data/",
+                local_dir=local_data_path
+            )
+
+            print("\nS3 data download completed.\n")
+
+        else:
+            print("Local data folder exists. Skipping S3 download.")
 
     # --------------------------------------------------
     # 2️⃣ LOAD DOCUMENTS
