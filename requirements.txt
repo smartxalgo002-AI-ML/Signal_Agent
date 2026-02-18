@@ -19,5 +19,6 @@ sentence-transformers==5.2.2
 rank_bm25==0.2.2
 chromadb==0.5.0
 boto3==1.42.50
+numpy==1.26.4
 
 -e .
