@@ -1,4 +1,4 @@
-**/data/
+src/financial_data_rag/data
 src/sm_book_rag/rag_experiments/
 src/market_live_rag/mkt-live-experiment/
 src/financial_data_rag/fin-rag-experiment/
