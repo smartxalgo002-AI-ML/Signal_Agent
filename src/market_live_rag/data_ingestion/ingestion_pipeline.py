@@ -112,8 +112,8 @@ class DataIngestion:
                 )
 
                 metadata = {
+                    "region": entry.get("region"),
                     "url": entry.get("url"),
-                    "title": entry.get("title"),
                 }
 
                 documents.append(
@@ -250,7 +250,7 @@ if __name__ == "__main__":
 
         for i, doc in enumerate(results, 1):
             print(f"\nResult {i}:")
-            print(doc.page_content[:500])
+            print(doc.page_content)
             print("-" * 50)
 
         print("\n") 

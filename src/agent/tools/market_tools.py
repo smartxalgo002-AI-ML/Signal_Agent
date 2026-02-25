@@ -66,6 +66,7 @@ data_ingestion.run_pipeline(file_path)
 def market_live_data(query: Annotated[str, "Live market query"]):
     """Retrieve live market technical data for a stock."""
     results = data_ingestion.query_vector_db(query)
+    print(f"Market Live Data: {results}")
     return results
 
 
