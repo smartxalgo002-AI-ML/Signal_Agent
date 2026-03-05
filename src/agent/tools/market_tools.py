@@ -3,23 +3,46 @@ from langchain.tools import tool
 
 from src.market_live_rag.data_ingestion.ingestion_pipeline import DataIngestion
 from src.sm_book_rag.data_ingestion.ingestion_pipeline import BookIngestionPipeline
+from src.news_data_rag.data_ingestion import ingest_news
 from src.financial_data_rag.retriver import Neo4jCypherPipeline
 from src.financial_data_rag.online_retriver import get_metrics
+
+# @tool
+# def news_vector_db(query: Annotated[str, "News query"]):
+#     """Retrieve latest relevant news for a stock."""
+#     return "This is the News data"
 
 @tool
 def news_vector_db(query: Annotated[str, "News query"]):
     """Retrieve latest relevant news for a stock."""
-    return "This is the News data"
+
+    API_URL = "http://127.0.0.1:8000/news"
+
+    retriever = ingest_news(API_URL, hours=24, k=5)
+
+    results = retriever.invoke(query)
+
+    formatted_output = []
+
+    for doc in results:
+        formatted_output.append(
+            f"""Title: {doc.metadata['headline']}
+
+    Publish Time: {doc.metadata['published_time']}
+    Content: {doc.page_content}
+    """
+    )
+
+    results = "\n".join(formatted_output)
+    print(f"News Data: {results}")
+
+    return results
 
 
 
 
 
 
-# @tool
-# def financial_data(query: Annotated[str, "Financial query"]):
-#     """Retrieve latest financial fundamentals for a stock."""
-#     return "This is the Financial data"
 
 @tool
 def financial_data(query: Annotated[str, "Financial query"]):

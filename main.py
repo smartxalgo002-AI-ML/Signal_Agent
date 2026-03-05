@@ -74,6 +74,9 @@ import redis
 import json
 import asyncio
 
+from langsmith import traceable
+from langsmith import traceable, trace
+
 from src.agent.services.decision_engine import make_decision
 
 
@@ -86,7 +89,7 @@ def create_redis_connection():
         decode_responses=False
     )
 
-
+# @traceable(name="chekcing")
 async def process_signal(signal: dict):
     print("\n📩 Signal received")
 
@@ -111,11 +114,37 @@ async def redis_listener():
                 json_str = message["data"].decode("utf-8")
                 signal = json.loads(json_str)
 
-                await process_signal(signal)
+                # await process_signal(signal)
+
+                # --- Dynamic Display name Extraction ---
+                legs = signal.get("signal", {}).get("legs", []) # Default to empty list []
+
+                if legs and isinstance(legs, list):
+                    # Access the first leg in the list
+                    first_leg = legs[0]
+                    display_name = first_leg.get("displayName", "Unknown_Instrument")
+                else:
+                    display_name = "No_Legs_Found"
+
+                # --- Dynamic Display name Extraction ---
+                strategy = signal.get("signal", {}).get("strategy", {})
+                strategy_name = strategy.get("name", {})
+
+                # --- Dynamic Signal name Extraction ---
+                report_name = f"{strategy_name} - {display_name}"
+
+                # --- Wrap the call in a dynamic trace ---
+                with trace(name=report_name, run_type="chain", inputs={"signal": signal}):
+                    await process_signal(signal)
 
             except Exception as e:
                 print("❌ Failed to process signal:", e)
 
 
 if __name__ == "__main__":
-    asyncio.run(redis_listener())
+    # asyncio.run(redis_listener())
+    async def main():
+        # Using a proper async loop for the listener
+        await redis_listener()
+    
+    asyncio.run(main())

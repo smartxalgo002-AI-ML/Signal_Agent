@@ -12,7 +12,7 @@ embedding_model:
 llm:
   google:
     provider: "google"
-    model_name: "gemini-2.5-pro"
+    model_name: "gemini-flash-lite-latest"
   groq:
     provider: "groq"
     model_name: "deepseek-r1-distill-llama-70b"
