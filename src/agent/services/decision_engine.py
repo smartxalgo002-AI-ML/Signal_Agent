@@ -35,21 +35,6 @@ structured_llm = llm.with_structured_output(DecisionOutput)
 @traceable(name="make_decision")
 async def make_decision(signal):
 
-    # Agent 1
-    primary_data = await collect_data(signal)
-    # print(f"Primary Data: {primary_data}")
-    print("================================== Up Data Collector =====================================")
-
-    # Query generator
-    intelligence_queries = await generate_intelligence_queries(primary_data)
-    # print(f"Intelligence Queries: {intelligence_queries}")
-    print("================================== Up Data Intelligence Queries =====================================")
-
-    # Agent 2
-    intelligence_data = await collect_intelligence_data(intelligence_queries)
-    # print(f"Intelligence Data: {intelligence_data}")
-    print("================================== Up Data Intelligence Data =====================================")
-
     final_data = {
         "primary": primary_data,
         "intelligence": intelligence_data
@@ -67,10 +52,10 @@ You have traded through multiple market cycles and specialize in identifying hig
 
 Your task is to analyze market intelligence and determine the best **intraday options action**.
 
-Trading Signal:
+\nTrading Signal:
 {signal}
 
-Market Intelligence Data:
+\nMarket Intelligence Data:
 {final_data}
 
 Core Principle:
@@ -129,7 +114,7 @@ Return ONLY valid JSON in the following format:
 """
 
 
-
+    # print(prompt)
     result = await structured_llm.ainvoke(prompt)
 
     return result
