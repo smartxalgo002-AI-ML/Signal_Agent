@@ -16,6 +16,9 @@ llm:
   groq:
     provider: "groq"
     model_name: "deepseek-r1-distill-llama-70b"
+  ollama:
+    provider: "ollama"
+    model_name: "deepseek-v3.1:671b-cloud"
 
 tools:
   tavily:
